@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 public class HomeController : Controller
 {
@@ -6,5 +7,5 @@ public class HomeController : Controller
   private DataContext _dataContext;
   public HomeController(DataContext db) => _dataContext = db;
 
-  public IActionResult Index() => View(_dataContext.Blogs);
+  public IActionResult Index() => View(_dataContext.Blogs.OrderBy(b => b.Name));
 }
