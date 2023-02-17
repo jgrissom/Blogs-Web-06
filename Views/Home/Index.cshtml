@@ -1,1 +1,9 @@
-Hello Bloggers!
+@model IEnumerable<Blog>
+
+<div class="bg-primary m-1 p-1 text-white"><h4>Blog Listing</h4></div>
+<ul>
+  @foreach (Blog blog in Model)
+  {
+    <li>@blog.Name</li>
+  }
+</ul>
