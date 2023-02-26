@@ -56,4 +56,12 @@ public class HomeController : Controller
     @ViewBag.BlogId = id;
     return View();
   }
+
+  public IActionResult DeletePost(int id)
+  {
+    Post post = _dataContext.Posts.FirstOrDefault(p => p.PostId == id);
+    int BlogId = post.BlogId;
+    _dataContext.DeletePost(post);
+    return RedirectToAction("BlogDetail", new { id = BlogId });
+  }
 }
