@@ -6,4 +6,9 @@ public class DataContext : DbContext
 
   public DbSet<Blog> Blogs { get; set; }
   public DbSet<Post> Posts { get; set; }
+  public void AddBlog(Blog blog)
+  {
+    this.Add(blog);
+    this.SaveChanges();
+  }
 }

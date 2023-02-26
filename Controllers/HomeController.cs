@@ -9,4 +9,11 @@ public class HomeController : Controller
 
   public IActionResult Index() => View(_dataContext.Blogs.OrderBy(b => b.Name));
   public IActionResult AddBlog() => View();
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public IActionResult AddBlog(Blog model)
+  {
+    _dataContext.AddBlog(model);
+    return RedirectToAction("Index");
+  }
 }
