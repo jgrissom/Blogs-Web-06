@@ -8,4 +8,5 @@ public class HomeController : Controller
   public HomeController(DataContext db) => _dataContext = db;
 
   public IActionResult Index() => View(_dataContext.Blogs.OrderBy(b => b.Name));
+  public IActionResult AddBlog() => View();
 }
