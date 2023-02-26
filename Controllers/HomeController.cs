@@ -32,4 +32,9 @@ public class HomeController : Controller
     _dataContext.DeleteBlog(_dataContext.Blogs.FirstOrDefault(b => b.BlogId == id));
     return RedirectToAction("Index");
   }
+  public IActionResult BlogDetail(int id) => View(new PostViewModel
+  {
+    blog = _dataContext.Blogs.FirstOrDefault(b => b.BlogId == id),
+    Posts = _dataContext.Posts.Where(p => p.BlogId == id)
+  });
 }
